@@ -31,4 +31,14 @@ select strftime('%H', timestamp) as hour , AVG(current_speed)
 results = cursor.fetchall()
 print(results)
 
+hours = []
+speed = []
+
+for row in results:
+    hours.append(row[0])
+    speed.append(row[1])
+
+print(hours)
+print(speed)
+
 connection.close()
