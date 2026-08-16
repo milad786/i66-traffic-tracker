@@ -1,4 +1,5 @@
 import sqlite3
+import matplotlib.pyplot as plt
 
 connection = sqlite3.connect("traffic_data.db")
 cursor = connection.cursor()
@@ -40,5 +41,12 @@ for row in results:
 
 print(hours)
 print(speed)
+
+
+plt.plot(hours, speed)
+plt.xlabel("Hour of Day")
+plt.ylabel("Average Speed (km/h)")
+plt.title("I-66 Traffic Speed by Hour")
+plt.savefig("traffic_chart.png")
 
 connection.close()
