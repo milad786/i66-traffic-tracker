@@ -12,4 +12,23 @@ select is_congested, count(*)
 results = cursor.fetchall()
 print(results)
 
+cursor.execute("""
+select *
+        from traffic_readings
+        ORDER BY current_speed ASC
+        limit 1
+""")
+
+results = cursor.fetchall()
+print(results)
+
+cursor.execute("""
+select strftime('%H', timestamp) as hour , AVG(current_speed)
+        from traffic_readings
+        group by hour
+""")
+
+results = cursor.fetchall()
+print(results)
+
 connection.close()
